@@ -1,0 +1,9 @@
+/** Or回路 */
+CHIP Or {
+    IN a, b;
+    OUT out;
+    PARTS:
+    Not(in=a, out=c1);
+    Not(in=b, out=c2);
+    Nand(a=c1, b=c2, out=out);
+}
