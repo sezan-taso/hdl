@@ -1,0 +1,14 @@
+/**
+    デマルチプレクサ回路
+
+    selが0ならa、selが1ならbに出力
+    選択されなかった出力は0を返す
+*/
+CHIP Dmux {
+    IN in, sel;
+    OUT a, b;
+    PARTS:
+    Not(in=sel, out=notsel);
+    And(a=in, b=notsel, out=a);
+    And(a=in, b=sel, out=b);
+}
