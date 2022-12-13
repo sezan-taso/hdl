@@ -1,0 +1,25 @@
+/** デマルチプレクサ8選択 */
+CHIP Dmux8Way {
+    IN in, sel[3];
+    OUT a,b,c,d,e,f,g,h;
+    PARTS:
+    Not(in=sel[0], out=notsel0);
+    Not(in=sel[1], out=notsel1);
+    Not(in=sel[2], out=notsel2);
+    And3(a=notsel2, b=notsel1, c=notsel0, out=select1);
+    And3(a=notsel2, b=notsel1, c=sel[0], out=select2);
+    And3(a=notsel2, b=sel[1], c=notsel0, out=select3);
+    And3(a=notsel2, b=sel[1], c=sel[0], out=select4);
+    And3(a=sel[2], b=notsel1, c=notsel0, out=select5);
+    And3(a=sel[2], b=notsel1, c=sel[0], out=select6);
+    And3(a=sel[2], b=sel[1], c=notsel0, out=select7);
+    And3(a=sel[2], b=sel[1], c=sel[0], out=select8);
+    And(a=in, b=select1, out=a);
+    And(a=in, b=select2, out=b);
+    And(a=in, b=select3, out=c);
+    And(a=in, b=select4, out=d);
+    And(a=in, b=select5, out=e);
+    And(a=in, b=select6, out=f);
+    And(a=in, b=select7, out=g);
+    And(a=in, b=select8, out=h);
+}

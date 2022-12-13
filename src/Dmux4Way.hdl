@@ -1,0 +1,16 @@
+/** デマルチプレクサ4選択 */
+CHIP Dmux4Way {
+    IN in, sel[2];
+    OUT a, b, c, d;
+    PARTS:
+    Not(in=sel[0], out=notsel0);
+    Not(in=sel[1], out=notsel1);
+    And(a=notsel0, b=notsel1, out=and1);
+    And(a=notsel1, b=sel[0], out=and2);
+    And(a=sel[1], b=notsel0, out=and3);
+    And(a=sel[0], b=sel[1], out=and4);
+    And(a=in, b=and1, out=a);
+    And(a=in, b=and2, out=b);
+    And(a=in, b=and3, out=c);
+    And(a=in, b=and4, out=d);
+}

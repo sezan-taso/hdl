@@ -1,0 +1,8 @@
+/** 3入力すべて1なら1を出力 */
+CHIP And3 {
+    IN a,b,c;
+    OUT out;
+    PARTS:
+    And(a=a, b=b, out=out1);
+    And(a=out1, b=c, out=out);
+}
