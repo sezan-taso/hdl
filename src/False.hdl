@@ -1,0 +1,8 @@
+/** Falseを返す */
+CHIP False {
+    IN in;
+    OUT out;
+    PARTS:
+    True(in=in, out=true);
+    Not(in=true, out=out);
+}
