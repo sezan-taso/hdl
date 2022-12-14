@@ -1,0 +1,8 @@
+/** 16bitsがマイナスの値かどうか */
+CHIP IsMinus16 {
+    IN in[16];
+    OUT out;
+    PARTS:
+    False(in=in[15], out=false);
+    Or(a=in[15], b=false, out=out);
+}
