@@ -1,0 +1,13 @@
+/** 16bits*16384メモリ */
+CHIP RAM16K {
+    IN in[16], load, address[14];
+    OUT out[16];
+    PARTS:
+    From14To2And12(in=address, a=a, b=b);
+    Dmux4Way(in=load, sel=a, a=sel1, b=sel2, c=sel3, d=sel4);
+    RAM4K(in=in, load=sel1, address=b, out=res1);
+    RAM4K(in=in, load=sel2, address=b, out=res2);
+    RAM4K(in=in, load=sel3, address=b, out=res3);
+    RAM4K(in=in, load=sel4, address=b, out=res4);
+    Mux4Way16(a=res1, b=res2, c=res3, d=res4, sel=a, out=out);
+}

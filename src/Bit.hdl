@@ -1,0 +1,8 @@
+/** ビット回路 */
+CHIP Bit {
+    IN in, load;
+    OUT out;
+    PARTS:
+    Mux(a=save, b=in, sel=load, out=out1);
+    DFF(in=out1, out=out, out=save);
+}

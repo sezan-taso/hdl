@@ -1,0 +1,16 @@
+/** 16bits*8メモリ */
+CHIP RAM8 {
+    IN in[16], load, address[3];
+    OUT out[16];
+    PARTS:
+    Dmux8Way(in=load, sel=address, a=sel1, b=sel2, c=sel3, d=sel4, e=sel5, f=sel6, g=sel7, h=sel8);
+    Register(in=in,load=sel1,out=res1);
+    Register(in=in,load=sel2,out=res2);
+    Register(in=in,load=sel3,out=res3);
+    Register(in=in,load=sel4,out=res4);
+    Register(in=in,load=sel5,out=res5);
+    Register(in=in,load=sel6,out=res6);
+    Register(in=in,load=sel7,out=res7);
+    Register(in=in,load=sel8,out=res8);
+    Mux8Way16(a=res1, b=res2, c=res3, d=res4, e=res5, f=res6, g=res7, h=res8, sel=address, out=out);
+}

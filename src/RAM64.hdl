@@ -1,0 +1,17 @@
+/** 16bits*64メモリ */
+CHIP RAM64 {
+    IN in[16], load, address[6];
+    OUT out[16];
+    PARTS:
+    From6To3(in=address, a=a, b=b);
+    Dmux8Way(in=load, sel=a, a=sel1, b=sel2, c=sel3, d=sel4, e=sel5, f=sel6, g=sel7, h=sel8);
+    RAM8(in=in, load=sel1, address=b, out=res1);
+    RAM8(in=in, load=sel2, address=b, out=res2);
+    RAM8(in=in, load=sel3, address=b, out=res3);
+    RAM8(in=in, load=sel4, address=b, out=res4);
+    RAM8(in=in, load=sel5, address=b, out=res5);
+    RAM8(in=in, load=sel6, address=b, out=res6);
+    RAM8(in=in, load=sel7, address=b, out=res7);
+    RAM8(in=in, load=sel8, address=b, out=res8);
+    Mux8Way16(a=res1, b=res2, c=res3, d=res4, e=res5, f=res6, g=res7, h=res8, sel=a, out=out);
+}
