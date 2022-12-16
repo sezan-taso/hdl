@@ -1,0 +1,18 @@
+/** メモリ用のサポート回路 */
+CHIP From12To3And9 {
+    IN in[12];
+    OUT a[3], b[9];
+    PARTS:
+    And(a=in[0], b=true, out=b[0]);
+    And(a=in[1], b=true, out=b[1]);
+    And(a=in[2], b=true, out=b[2]);
+    And(a=in[3], b=true, out=b[3]);
+    And(a=in[4], b=true, out=b[4]);
+    And(a=in[5], b=true, out=b[5]);
+    And(a=in[6], b=true, out=b[6]);
+    And(a=in[7], b=true, out=b[7]);
+    And(a=in[8], b=true, out=b[8]);
+    And(a=in[9], b=true, out=a[0]);
+    And(a=in[10], b=true, out=a[1]);
+    And(a=in[11], b=true, out=a[2]);
+}
