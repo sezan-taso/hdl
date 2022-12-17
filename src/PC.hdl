@@ -1,0 +1,12 @@
+/** プログラムカウンタ */
+CHIP PC {
+    IN in[16], inc, load, reset;
+    OUT out[16];
+    PARTS:
+    Inc16(in=res3, out=inplus);
+    Mux16(a=in, b=inplus, sel=inc, out=res1);
+    Not16(in=in, out=notin);
+    And16(a=in, b=notin, out=zero);
+    Mux16(a=res1, b=zero, sel=reset, out=res2);
+    Register(in=res2, load=load, out=out, out=res3);
+}
